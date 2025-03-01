@@ -1,0 +1,201 @@
+{
+  "id": "track-2",
+  "name": "Suzuka Circuit",
+  "author": "System",
+  "startPosition": {
+    "x": 150,
+    "y": 400
+  },
+  "segments": [
+    {
+      "id": "segment-1",
+      "type": "straight",
+      "position": {
+        "x": 150,
+        "y": 400
+      },
+      "rotation": 0,
+      "length": 100,
+      "width": 30
+    },
+    {
+      "id": "segment-2",
+      "type": "curve",
+      "position": {
+        "x": 150,
+        "y": 300
+      },
+      "rotation": 0,
+      "radius": 60,
+      "angle": 45,
+      "width": 30
+    },
+    {
+      "id": "segment-3",
+      "type": "straight",
+      "position": {
+        "x": 190,
+        "y": 250
+      },
+      "rotation": 45,
+      "length": 100,
+      "width": 30
+    },
+    {
+      "id": "segment-4",
+      "type": "curve",
+      "position": {
+        "x": 260,
+        "y": 180
+      },
+      "rotation": 45,
+      "radius": 40,
+      "angle": 135,
+      "width": 30
+    },
+    {
+      "id": "segment-5",
+      "type": "straight",
+      "position": {
+        "x": 300,
+        "y": 180
+      },
+      "rotation": 180,
+      "length": 80,
+      "width": 30
+    },
+    {
+      "id": "segment-6",
+      "type": "curve",
+      "position": {
+        "x": 380,
+        "y": 180
+      },
+      "rotation": 180,
+      "radius": 40,
+      "angle": 135,
+      "width": 30
+    },
+    {
+      "id": "segment-7",
+      "type": "straight",
+      "position": {
+        "x": 420,
+        "y": 220
+      },
+      "rotation": 315,
+      "length": 70,
+      "width": 30
+    },
+    {
+      "id": "segment-8",
+      "type": "curve",
+      "position": {
+        "x": 470,
+        "y": 270
+      },
+      "rotation": 315,
+      "radius": 50,
+      "angle": 90,
+      "width": 30
+    },
+    {
+      "id": "segment-9",
+      "type": "straight",
+      "position": {
+        "x": 520,
+        "y": 320
+      },
+      "rotation": 45,
+      "length": 100,
+      "width": 30
+    },
+    {
+      "id": "segment-10",
+      "type": "curve",
+      "position": {
+        "x": 590,
+        "y": 390
+      },
+      "rotation": 45,
+      "radius": 60,
+      "angle": 90,
+      "width": 30
+    },
+    {
+      "id": "segment-11",
+      "type": "straight",
+      "position": {
+        "x": 590,
+        "y": 450
+      },
+      "rotation": 135,
+      "length": 150,
+      "width": 30
+    },
+    {
+      "id": "segment-12",
+      "type": "curve",
+      "position": {
+        "x": 480,
+        "y": 560
+      },
+      "rotation": 135,
+      "radius": 70,
+      "angle": 45,
+      "width": 30
+    },
+    {
+      "id": "segment-13",
+      "type": "straight",
+      "position": {
+        "x": 430,
+        "y": 580
+      },
+      "rotation": 180,
+      "length": 200,
+      "width": 30
+    },
+    {
+      "id": "segment-14",
+      "type": "curve",
+      "position": {
+        "x": 230,
+        "y": 580
+      },
+      "rotation": 180,
+      "radius": 90,
+      "angle": 180,
+      "width": 30
+    },
+    {
+      "id": "segment-15",
+      "type": "straight",
+      "position": {
+        "x": 150,
+        "y": 490
+      },
+      "rotation": 0,
+      "length": 90,
+      "width": 30
+    }
+  ],
+  "checkpoints": [
+    {
+      "x": 300,
+      "y": 180
+    },
+    {
+      "x": 520,
+      "y": 350
+    },
+    {
+      "x": 400,
+      "y": 580
+    },
+    {
+      "x": 150,
+      "y": 540
+    }
+  ]
+} 

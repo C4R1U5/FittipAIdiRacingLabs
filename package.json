@@ -1,0 +1,31 @@
+{
+  "name": "fittipaidiracinglabs",
+  "version": "1.0.0",
+  "description": "Apex Architects is not just a racing game — it's a revolution in racecraft. Draw your own tracks, race your own creations. Racing isn't just speed. Racing is art.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/C4R1U5/FittipAIdiRacingLabs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/C4R1U5/FittipAIdiRacingLabs/issues"
+  },
+  "homepage": "https://github.com/C4R1U5/FittipAIdiRacingLabs#readme",
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@fontsource/press-start-2p": "^5.2.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zustand": "^5.0.3"
+  }
+}

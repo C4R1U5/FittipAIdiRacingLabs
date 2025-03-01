@@ -1,0 +1,117 @@
+{
+  "id": "track-1",
+  "name": "Monaco Circuit",
+  "author": "System",
+  "startPosition": {
+    "x": 100,
+    "y": 300
+  },
+  "segments": [
+    {
+      "id": "segment-1",
+      "type": "straight",
+      "position": {
+        "x": 100,
+        "y": 300
+      },
+      "rotation": 0,
+      "length": 150,
+      "width": 30
+    },
+    {
+      "id": "segment-2",
+      "type": "curve",
+      "position": {
+        "x": 100,
+        "y": 150
+      },
+      "rotation": 0,
+      "radius": 50,
+      "angle": 90,
+      "width": 30
+    },
+    {
+      "id": "segment-3",
+      "type": "straight",
+      "position": {
+        "x": 150,
+        "y": 100
+      },
+      "rotation": 90,
+      "length": 200,
+      "width": 30
+    },
+    {
+      "id": "segment-4",
+      "type": "curve",
+      "position": {
+        "x": 350,
+        "y": 100
+      },
+      "rotation": 90,
+      "radius": 50,
+      "angle": 90,
+      "width": 30
+    },
+    {
+      "id": "segment-5",
+      "type": "straight",
+      "position": {
+        "x": 400,
+        "y": 150
+      },
+      "rotation": 180,
+      "length": 100,
+      "width": 30
+    },
+    {
+      "id": "segment-6",
+      "type": "curve",
+      "position": {
+        "x": 400,
+        "y": 250
+      },
+      "rotation": 180,
+      "radius": 70,
+      "angle": 120,
+      "width": 30
+    },
+    {
+      "id": "segment-7",
+      "type": "straight",
+      "position": {
+        "x": 330,
+        "y": 300
+      },
+      "rotation": 300,
+      "length": 150,
+      "width": 30
+    },
+    {
+      "id": "segment-8",
+      "type": "curve",
+      "position": {
+        "x": 180,
+        "y": 350
+      },
+      "rotation": 300,
+      "radius": 80,
+      "angle": 60,
+      "width": 30
+    }
+  ],
+  "checkpoints": [
+    {
+      "x": 300,
+      "y": 100
+    },
+    {
+      "x": 400,
+      "y": 200
+    },
+    {
+      "x": 250,
+      "y": 325
+    }
+  ]
+} 
