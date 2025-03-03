@@ -117,13 +117,13 @@
 
 @keyframes flagWave {
   0% {
-    transform: translateY(0px) skewX(2deg);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(4px) skewX(-2deg);
+    transform: translateY(4px);
   }
   100% {
-    transform: translateY(0px) skewX(2deg);
+    transform: translateY(0);
   }
 }
 
@@ -166,7 +166,7 @@
   }
 }
 
-/* Main container - now static */
+/* Main container - static with black base */
 .container {
   display: flex;
   flex-direction: column;
@@ -178,44 +178,75 @@
   color: #fff;
   font-family: 'Press Start 2P', monospace;
   overflow: hidden;
+  background: #000;
   /* Remove all animation from main container */
   transform: none !important;
   animation: none !important;
   perspective: none !important;
+  /* Ensure container creates its own stacking context */
+  isolation: isolate;
+  /* Force hardware acceleration without transforms */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Dedicated animated background layer */
+/* Dedicated checkered flag background layer */
 .container::before {
   content: '';
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block !important;
+  background-image: repeating-conic-gradient(
+    #000 0% 25%,
+    #111 25% 50%,
+    #000 50% 75%,
+    #111 75% 100%
+  );
+  background-size: 100px 100px;
+  /* Only the background layer gets the animation */
+  animation: flagWave 4s infinite ease-in-out;
+  transform-origin: center center;
+  pointer-events: none;
+  /* Force hardware acceleration */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  will-change: transform;
+}
+
+/* Add a subtle vignette overlay */
+.container::after {
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 0;
-  display: block !important;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 20%, transparent 50%),
-    repeating-conic-gradient(
-      #111 0% 25%,
-      #000 25% 50%,
-      #111 50% 75%,
-      #000 75% 100%
-    );
-  background-size: 100px 100px;
-  /* Only the background layer gets the animation */
-  animation: flagWave 6s infinite ease-in-out;
-  transform-origin: center center;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   pointer-events: none;
 }
 
-/* Static content wrapper */
+/* Static content wrapper - fully isolated from background */
 .contentWrapper {
   position: relative;
   z-index: 1;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 2rem;
   /* Ensure content stays static */
   transform: none !important;
   animation: none !important;
@@ -223,16 +254,21 @@
   perspective: none !important;
   /* Prevent animation inheritance */
   isolation: isolate;
+  /* Force hardware acceleration */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  will-change: auto;
 }
 
 /* Menu container - zero motion */
 .menuContainer {
-  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem 0;
-  width: 100%;
+  gap: 1rem;
+  padding: 0;
   position: relative;
   z-index: 2;
   /* Absolutely no motion */
@@ -241,6 +277,7 @@
   transition: none !important;
   perspective: none !important;
   transform-style: flat !important;
+  will-change: auto !important;
   /* Double-ensure no inheritance */
   isolation: isolate;
   /* Force own stacking context */
@@ -255,43 +292,46 @@
   background: rgba(0, 0, 0, 0.8);
   border: 2px solid #00f0ff;
   border-radius: 8px;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   cursor: pointer;
   text-align: left;
   width: 100%;
-  height: 4rem;
+  height: 4.5rem;
   color: #00f0ff;
   position: relative;
   z-index: 2;
+  margin: 0;
   /* Triple-enforce stability */
   transform: none !important;
   animation: none !important;
   transition: none !important;
   perspective: none !important;
   transform-style: flat !important;
+  will-change: auto !important;
   /* Create own stacking context */
   isolation: isolate;
   contain: layout style paint;
   /* Force hardware acceleration without transforms */
   backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
+  /* Remove any possible transitions */
+  transition-property: none !important;
 }
 
 .menuItem:hover,
 .menuItem[aria-selected="true"] {
-  color: #ff0;
+  color: #0f0;
   border-color: #ff0;
-  text-shadow: 0 0 10px #ff0;
-  /* Ensure no hover animations */
+  text-shadow: 0 0 10px #0f0;
+  /* Ensure instant color change */
+  transition: none !important;
   transform: none !important;
   animation: none !important;
-  transition: none !important;
 }
 
 .menuItem:hover *,
 .menuItem[aria-selected="true"] * {
-  color: #ff0;
-  text-shadow: 0 0 10px #ff0;
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
   /* Lock child elements */
   transform: none !important;
   animation: none !important;
@@ -344,15 +384,16 @@
   position: static !important;
 }
 
-/* Track of the Day section - ensure stability */
+/* Track of the Day section - ensure stability and perfect alignment */
 .trackOfTheDay {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto 0;
   background: rgba(0, 0, 0, 0.8);
   border: 2px solid #f0f;
   border-radius: 8px;
   padding: 1.5rem;
-  width: 100%;
-  height: 5rem;
-  margin-top: 0.5rem;
+  min-height: 6rem;
   position: relative;
   z-index: 2;
   /* Prevent any animation inheritance */
@@ -360,16 +401,27 @@
   animation: none !important;
   transition: none !important;
   perspective: none !important;
+  will-change: auto !important;
   /* Create own stacking context */
   isolation: isolate;
   contain: layout style paint;
+}
+
+.trackOfTheDay h4 {
+  color: #f0f;
+  text-shadow: 0 0 10px #f0f;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  letter-spacing: 2px;
 }
 
 .trackPreview {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  gap: 2rem;
+  height: auto;
+  min-height: 3rem;
 }
 
 .trackInfo {
@@ -377,6 +429,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .trackName {
@@ -385,24 +438,32 @@
   text-shadow: 0 0 5px #f0f;
   margin: 0;
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .miniMap {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  min-width: 3.5rem;
   background: rgba(255, 0, 255, 0.1);
   border: 2px solid #f0f;
   border-radius: 50%;
-  margin: 0 2rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .trackStats {
   font-size: 0.7rem;
-  color: #fff;
-  text-shadow: 0 0 5px #f0f;
+  color: #ccc;
+  text-shadow: 0 0 3px #f0f;
   margin: 0;
   text-align: right;
   flex: 1;
+  white-space: nowrap;
 }
 
 /* Debug Panel */
@@ -450,42 +511,95 @@
 
 /* Responsive adjustments */
 @media (max-width: 1920px) {
-  .container {
-    padding-top: 3rem;
+  .contentWrapper {
+    padding: 1.5rem;
   }
   
-  .title, .subtitle {
-    font-size: 4rem;
+  .menuContainer,
+  .trackOfTheDay {
+    max-width: 700px;
   }
 }
 
 @media (max-width: 1366px) {
-  .container {
-    padding-top: 2rem;
+  .contentWrapper {
+    padding: 1rem;
   }
   
-  .title, .subtitle {
-    font-size: 3rem;
+  .menuContainer,
+  .trackOfTheDay {
+    max-width: 600px;
   }
   
   .menuItem {
-    height: 3.5rem;
+    height: 4rem;
+    padding: 1.25rem;
+  }
+
+  .trackOfTheDay {
+    padding: 1.25rem;
+    min-height: 5.5rem;
+  }
+
+  .trackPreview {
+    gap: 1.5rem;
+  }
+
+  .trackInfo {
+    gap: 1.5rem;
+  }
+
+  .miniMap {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 1.5rem 1rem;
+  .contentWrapper {
+    padding: 0.75rem;
   }
-
-  .title, .subtitle {
-    font-size: 2rem;
+  
+  .menuContainer,
+  .trackOfTheDay {
+    max-width: 100%;
   }
-
+  
+  .menuContainer {
+    gap: 0.75rem;
+  }
+  
   .menuItem {
-    padding: 0.75rem 1rem;
+    height: 3.5rem;
+    padding: 1rem;
+  }
+
+  .trackOfTheDay {
+    padding: 1rem;
+    min-height: 5rem;
+  }
+
+  .trackPreview {
     gap: 1rem;
-    height: 3rem;
+  }
+
+  .trackInfo {
+    gap: 1rem;
+  }
+
+  .miniMap {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+  }
+
+  .trackName {
+    font-size: 0.8rem;
+  }
+
+  .trackStats {
+    font-size: 0.6rem;
   }
 
   .content h3 {
@@ -551,8 +665,11 @@
 
 /* Title section - single instance */
 .titleContainer {
+  width: 100%;
+  max-width: 1000px;
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 0 auto 3rem;
+  padding: 0;
   transform: perspective(800px) rotateX(5deg);
   transform-origin: center top;
   z-index: 1;
