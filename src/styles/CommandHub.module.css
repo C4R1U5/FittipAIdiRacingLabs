@@ -684,10 +684,14 @@
   text-transform: uppercase;
   margin: 0;
   letter-spacing: 4px;
-  animation: titleGlowGreen 4s infinite;
   line-height: 1.2;
   text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
   position: relative;
+  /* Add floating animation */
+  animation: titleGlowGreen 4s infinite, titleFloat 8s infinite ease-in-out;
+  /* Ensure hardware acceleration */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .subtitle {
@@ -702,4 +706,18 @@
     0 0 12px #ff5500,
     0 0 16px #ff2200;
   position: relative;
+  /* Add floating animation with slight delay */
+  animation: titleFloat 8s infinite ease-in-out 0.5s;
+  /* Ensure hardware acceleration */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes titleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 } 

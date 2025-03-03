@@ -6,6 +6,11 @@ import { CommandHub } from './pages/CommandHub'
 import { RaceRituals } from './pages/RaceRituals'
 import { RaceScreen } from './pages/RaceScreen'
 import { TrackArchitects } from './pages/TrackArchitects'
+import CareerMode from './pages/CareerMode'
+import Garage from './pages/Garage'
+import HallOfTimes from './pages/HallOfTimes'
+import Settings from './pages/Settings'
+import TrackArchive from './pages/TrackArchive'
 
 export const App: React.FC = () => {
   const loadTracks = useGameStore(state => state.loadTracks)
@@ -30,11 +35,11 @@ export const App: React.FC = () => {
         <Route path="/race-rituals" element={<RaceRituals />} />
         <Route path="/race" element={<RaceScreen />} />
         <Route path="/track-architects" element={<TrackArchitects />} />
-        <Route path="/career" element={<Navigate to="/" replace />} />
-        <Route path="/garage" element={<Navigate to="/" replace />} />
-        <Route path="/leaderboard" element={<Navigate to="/" replace />} />
-        <Route path="/options" element={<Navigate to="/" replace />} />
-        <Route path="/archive" element={<Navigate to="/" replace />} />
+        <Route path="/career-mode" element={<CareerMode />} />
+        <Route path="/garage" element={<Garage />} />
+        <Route path="/hall-of-times" element={<HallOfTimes />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/track-archive" element={<TrackArchive />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

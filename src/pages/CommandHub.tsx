@@ -26,7 +26,7 @@ const MENU_ITEMS: MenuItem[] = [
     title: 'THROTTLE SCRAWL',
     description: 'Master the campaign mode',
     icon: '🏆',
-    route: '/career',
+    route: '/career-mode',
     className: styles.campaign
   },
   {
@@ -50,7 +50,7 @@ const MENU_ITEMS: MenuItem[] = [
     title: 'HALL OF TIMES',
     description: 'View global rankings',
     icon: '⏱️',
-    route: '/leaderboard',
+    route: '/hall-of-times',
     className: styles.leaderboard
   },
   {
@@ -58,7 +58,7 @@ const MENU_ITEMS: MenuItem[] = [
     title: 'CONTROL TOWER',
     description: 'Adjust your settings',
     icon: '🎮',
-    route: '/options',
+    route: '/settings',
     className: styles.options
   },
   {
@@ -66,7 +66,7 @@ const MENU_ITEMS: MenuItem[] = [
     title: 'THE ARCHIVE',
     description: 'Browse custom tracks',
     icon: '📚',
-    route: '/archive',
+    route: '/track-archive',
     className: styles.archive
   }
 ];
