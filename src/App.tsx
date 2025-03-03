@@ -1,30 +1,37 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import './App.css'
-import Home from './pages/Home'
-import Tracks from './pages/Tracks'
-import Vehicles from './pages/Vehicles'
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useGameStore } from './store/gameStore'
+import './styles/global.css'
+import { ModeSelector } from './pages/ModeSelector'
+import { RaceRituals } from './pages/RaceRituals'
+import { RaceScreen } from './pages/RaceScreen'
+import { TrackArchitects } from './pages/TrackArchitects'
 
-function App() {
+export const App: React.FC = () => {
+  const loadTracks = useGameStore(state => state.loadTracks)
+  const loadVehicles = useGameStore(state => state.loadVehicles)
+
+  useEffect(() => {
+    // Load tracks and vehicles when the application starts
+    Promise.all([
+      loadTracks().catch(error => {
+        console.error('Failed to load tracks:', error)
+      }),
+      loadVehicles().catch(error => {
+        console.error('Failed to load vehicles:', error)
+      })
+    ])
+  }, [loadTracks, loadVehicles])
+
   return (
     <Router>
-      <div className="app">
-        <nav className="nav">
-          <Link to="/">Home</Link>
-          <Link to="/tracks">Tracks</Link>
-          <Link to="/vehicles">Vehicles</Link>
-        </nav>
-
-        <main className="main">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tracks" element={<Tracks />} />
-            <Route path="/vehicles" element={<Vehicles />} />
-          </Routes>
-        </main>
-      </div>
+      <Routes>
+        <Route path="/" element={<ModeSelector />} />
+        <Route path="/race-rituals" element={<RaceRituals />} />
+        <Route path="/race" element={<RaceScreen />} />
+        <Route path="/track-architects" element={<TrackArchitects />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </Router>
   )
-}
-
-export default App 
+} 

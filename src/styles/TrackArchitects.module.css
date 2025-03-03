@@ -1,0 +1,62 @@
+.container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  color: #f0f;
+  text-shadow: 0 0 10px #f0f;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.header p {
+  color: #fff;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  background: rgba(255, 0, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid #f0f;
+}
+
+.placeholder p {
+  margin: 0 0 2rem;
+  font-size: 1.2rem;
+}
+
+.placeholder button {
+  background: #f0f;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.placeholder button:hover {
+  background: #fff;
+  box-shadow: 0 0 20px #f0f;
+} 

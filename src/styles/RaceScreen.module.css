@@ -1,0 +1,130 @@
+.container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.trackInfo h1 {
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.trackDetails {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.surface,
+.difficulty {
+  background: rgba(0, 255, 255, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.vehicleInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vehicleColor {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.vehicleInfo h2 {
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.raceView {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/checkerboard-bg.png') repeat;
+  border: 2px solid #f0f;
+  border-radius: 8px;
+  min-height: 500px;
+}
+
+.placeholder {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.placeholder p {
+  color: #f0f;
+  font-size: 1.5rem;
+  margin: 0 0 2rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat label {
+  color: #0f0;
+  font-size: 0.8rem;
+}
+
+.stat span {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.exitButton {
+  background: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.exitButton:hover {
+  background: #ff0;
+  color: #000;
+  box-shadow: 0 0 20px #ff0;
+} 

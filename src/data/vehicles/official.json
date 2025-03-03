@@ -1,0 +1,94 @@
+{
+  "default": [
+    {
+      "id": "speedster-gt",
+      "name": "Speedster GT",
+      "speed": 85,
+      "acceleration": 80,
+      "handling": 75,
+      "visuals": {
+        "color": "#ff0000",
+        "decals": [
+          {
+            "id": "racing-stripe",
+            "position": { "x": 0, "y": 0 },
+            "rotation": 0,
+            "scale": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "thunder-mk2",
+      "name": "Thunder Mk2",
+      "speed": 90,
+      "acceleration": 70,
+      "handling": 85,
+      "visuals": {
+        "color": "#0066ff",
+        "decals": [
+          {
+            "id": "side-flame",
+            "position": { "x": -50, "y": 0 },
+            "rotation": 0,
+            "scale": 1.2
+          },
+          {
+            "id": "hood-logo",
+            "position": { "x": 0, "y": 20 },
+            "rotation": 0,
+            "scale": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "flash-prototype",
+      "name": "Flash Prototype",
+      "speed": 95,
+      "acceleration": 90,
+      "handling": 70,
+      "visuals": {
+        "color": "#ffff00",
+        "decals": [
+          {
+            "id": "tech-pattern",
+            "position": { "x": 0, "y": 0 },
+            "rotation": 45,
+            "scale": 1.5
+          },
+          {
+            "id": "wing-accent",
+            "position": { "x": 60, "y": -10 },
+            "rotation": 0,
+            "scale": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "shadow-gt",
+      "name": "Shadow GT",
+      "speed": 88,
+      "acceleration": 85,
+      "handling": 82,
+      "visuals": {
+        "color": "#2c2c2c",
+        "decals": [
+          {
+            "id": "stealth-stripe",
+            "position": { "x": 0, "y": 0 },
+            "rotation": 0,
+            "scale": 1.0
+          },
+          {
+            "id": "neon-trim",
+            "position": { "x": 0, "y": -15 },
+            "rotation": 0,
+            "scale": 1.0
+          }
+        ]
+      }
+    }
+  ]
+} 

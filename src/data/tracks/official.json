@@ -1,0 +1,198 @@
+{
+  "default": [
+    {
+      "id": "sunset-speedway",
+      "name": "Sunset Speedway",
+      "segments": [
+        {
+          "id": "start-straight",
+          "type": "straight",
+          "start": { "x": 0, "y": 0 },
+          "end": { "x": 1000, "y": 0 },
+          "width": 20
+        },
+        {
+          "id": "turn-1",
+          "type": "curve",
+          "start": { "x": 1000, "y": 0 },
+          "end": { "x": 1000, "y": 500 },
+          "width": 20
+        },
+        {
+          "id": "back-straight",
+          "type": "straight",
+          "start": { "x": 1000, "y": 500 },
+          "end": { "x": 0, "y": 500 },
+          "width": 20
+        },
+        {
+          "id": "final-turn",
+          "type": "curve",
+          "start": { "x": 0, "y": 500 },
+          "end": { "x": 0, "y": 0 },
+          "width": 20
+        }
+      ],
+      "checkpoints": [
+        {
+          "id": "start",
+          "position": { "x": 500, "y": 0 },
+          "order": 0
+        },
+        {
+          "id": "checkpoint-1",
+          "position": { "x": 1000, "y": 250 },
+          "order": 1
+        },
+        {
+          "id": "checkpoint-2",
+          "position": { "x": 500, "y": 500 },
+          "order": 2
+        }
+      ],
+      "surface": "asphalt",
+      "difficulty": "medium",
+      "commentary": "A classic oval with a modern twist",
+      "createdAt": "2024-03-20T00:00:00.000Z",
+      "author": "FittipAIdi Labs"
+    },
+    {
+      "id": "mountain-pass",
+      "name": "Mountain Pass",
+      "segments": [
+        {
+          "id": "start-climb",
+          "type": "straight",
+          "start": { "x": 0, "y": 0 },
+          "end": { "x": 500, "y": 200 },
+          "width": 15
+        },
+        {
+          "id": "hairpin-1",
+          "type": "curve",
+          "start": { "x": 500, "y": 200 },
+          "end": { "x": 400, "y": 400 },
+          "width": 15
+        },
+        {
+          "id": "mountain-straight",
+          "type": "straight",
+          "start": { "x": 400, "y": 400 },
+          "end": { "x": 100, "y": 400 },
+          "width": 15
+        },
+        {
+          "id": "descent-turn",
+          "type": "curve",
+          "start": { "x": 100, "y": 400 },
+          "end": { "x": 0, "y": 200 },
+          "width": 15
+        },
+        {
+          "id": "final-descent",
+          "type": "straight",
+          "start": { "x": 0, "y": 200 },
+          "end": { "x": 0, "y": 0 },
+          "width": 15
+        }
+      ],
+      "checkpoints": [
+        {
+          "id": "start",
+          "position": { "x": 0, "y": 100 },
+          "order": 0
+        },
+        {
+          "id": "checkpoint-1",
+          "position": { "x": 450, "y": 300 },
+          "order": 1
+        },
+        {
+          "id": "checkpoint-2",
+          "position": { "x": 250, "y": 400 },
+          "order": 2
+        },
+        {
+          "id": "checkpoint-3",
+          "position": { "x": 0, "y": 100 },
+          "order": 3
+        }
+      ],
+      "surface": "mixed",
+      "difficulty": "hard",
+      "commentary": "Challenging mountain course with tight hairpins",
+      "createdAt": "2024-03-20T00:00:00.000Z",
+      "author": "FittipAIdi Labs"
+    },
+    {
+      "id": "coastal-sprint",
+      "name": "Coastal Sprint",
+      "segments": [
+        {
+          "id": "beach-straight",
+          "type": "straight",
+          "start": { "x": 0, "y": 0 },
+          "end": { "x": 800, "y": 0 },
+          "width": 18
+        },
+        {
+          "id": "coastal-curve",
+          "type": "curve",
+          "start": { "x": 800, "y": 0 },
+          "end": { "x": 1000, "y": 200 },
+          "width": 18
+        },
+        {
+          "id": "scenic-straight",
+          "type": "straight",
+          "start": { "x": 1000, "y": 200 },
+          "end": { "x": 1000, "y": 600 },
+          "width": 18
+        },
+        {
+          "id": "return-curve",
+          "type": "curve",
+          "start": { "x": 1000, "y": 600 },
+          "end": { "x": 800, "y": 800 },
+          "width": 18
+        },
+        {
+          "id": "final-straight",
+          "type": "straight",
+          "start": { "x": 800, "y": 800 },
+          "end": { "x": 0, "y": 800 },
+          "width": 18
+        },
+        {
+          "id": "finish-curve",
+          "type": "curve",
+          "start": { "x": 0, "y": 800 },
+          "end": { "x": 0, "y": 0 },
+          "width": 18
+        }
+      ],
+      "checkpoints": [
+        {
+          "id": "start",
+          "position": { "x": 400, "y": 0 },
+          "order": 0
+        },
+        {
+          "id": "checkpoint-1",
+          "position": { "x": 1000, "y": 400 },
+          "order": 1
+        },
+        {
+          "id": "checkpoint-2",
+          "position": { "x": 400, "y": 800 },
+          "order": 2
+        }
+      ],
+      "surface": "asphalt",
+      "difficulty": "easy",
+      "commentary": "Fast beachside track with sweeping curves",
+      "createdAt": "2024-03-20T00:00:00.000Z",
+      "author": "FittipAIdi Labs"
+    }
+  ]
+} 

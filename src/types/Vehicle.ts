@@ -1,11 +1,13 @@
+export interface Decal {
+  id: string;
+  position: { x: number; y: number };
+  rotation: number;
+  scale: number;
+}
+
 export interface VehicleVisuals {
   color: string;
-  decals: {
-    id: string;
-    position: { x: number; y: number };
-    rotation: number;
-    scale: number;
-  }[];
+  decals: Decal[];
 }
 
 export interface Vehicle {
@@ -15,4 +17,5 @@ export interface Vehicle {
   acceleration: number;
   handling: number;
   visuals: VehicleVisuals;
+  validationErrors?: string[];
 } 
