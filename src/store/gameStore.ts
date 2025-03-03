@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { Track } from '../types/Track';
 import { Vehicle } from '../types/Vehicle';
-import { TrackService } from '../services/trackService';
-import { VehicleService } from '../services/vehicleService';
+import { trackService } from '../services/TrackService';
+import { vehicleService } from '../services/VehicleService';
 
 // Placeholder data for vehicles until we implement the vehicle system
 const DEMO_VEHICLES: Vehicle[] = [
@@ -89,18 +89,8 @@ export const useGameStore = create<GameState>((set) => ({
   
   // Track actions
   loadTracks: async () => {
-    const trackService = TrackService.getInstance();
-    const officialTracks = await trackService.loadOfficialTracks();
-    const customTracks = trackService.loadCustomTracks();
-    const debugTracks = trackService.loadDebugTracks();
-    
-    set((state) => ({
-      availableTracks: [
-        ...officialTracks,
-        ...customTracks,
-        ...(state.isDebugMode ? debugTracks : [])
-      ]
-    }));
+    const tracks = await trackService.loadAllTracks();
+    set({ availableTracks: tracks });
   },
 
   addTrack: (track) => {
@@ -149,12 +139,8 @@ export const useGameStore = create<GameState>((set) => ({
 
   // Vehicle actions
   loadVehicles: async () => {
-    const vehicleService = VehicleService.getInstance();
     const vehicles = await vehicleService.loadVehicles();
-    
-    set({
-      availableVehicles: vehicles
-    });
+    set({ availableVehicles: vehicles });
   },
   
   selectVehicle: (vehicleId) => set((state) => ({ 
@@ -163,5 +149,9 @@ export const useGameStore = create<GameState>((set) => ({
 
   setCurrentVehicle: (vehicle) => set(() => ({
     currentVehicle: vehicle
-  }))
+  })),
+
+  // New actions
+  setSelectedTrack: (track) => set({ selectedTrack: track }),
+  setSelectedVehicle: (vehicle) => set({ selectedVehicle: vehicle })
 })); 

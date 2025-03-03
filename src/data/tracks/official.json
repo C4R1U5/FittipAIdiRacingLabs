@@ -1,73 +1,101 @@
 {
-  "default": [
+  "tracks": [
     {
-      "id": "monza-sprint",
-      "name": "Monza Sprint",
+      "id": "monza-jr",
+      "name": "Monza Junior",
       "segments": [
         {
-          "id": "straight-1",
           "type": "straight",
-          "start": { "x": 0, "y": 0 },
-          "end": { "x": 1000, "y": 0 },
-          "width": 20,
-          "length": 1000,
-          "position": { "x": 0, "y": 0 }
+          "length": 500
         },
         {
-          "id": "curve-1",
           "type": "curve",
-          "start": { "x": 1000, "y": 0 },
-          "end": { "x": 1200, "y": 200 },
-          "width": 20,
-          "length": 300,
+          "length": 200,
           "angle": 90,
-          "position": { "x": 1000, "y": 0 }
+          "direction": "right"
+        },
+        {
+          "type": "straight",
+          "length": 300
+        },
+        {
+          "type": "chicane",
+          "length": 150,
+          "direction": "left"
         }
       ],
       "checkpoints": [
-        { "id": "cp-1", "position": { "x": 500, "y": 0 }, "angle": 0, "order": 1 },
-        { "id": "cp-2", "position": { "x": 1100, "y": 100 }, "angle": 45, "order": 2 }
+        {
+          "position": 0,
+          "type": "start"
+        },
+        {
+          "position": 33,
+          "type": "sector",
+          "sectorNumber": 1
+        },
+        {
+          "position": 66,
+          "type": "sector",
+          "sectorNumber": 2
+        },
+        {
+          "position": 100,
+          "type": "finish"
+        }
       ],
       "surface": "asphalt",
-      "difficulty": "medium",
-      "commentary": "High-speed sprint with a challenging chicane",
-      "createdAt": "2024-03-20T12:00:00Z",
-      "author": "FittipAIdi"
+      "difficulty": "beginner",
+      "author": "FittipAIdi Labs",
+      "createdAt": "2024-03-01",
+      "commentary": "A beginner-friendly track inspired by the legendary Monza circuit."
     },
     {
       "id": "mountain-pass",
       "name": "Mountain Pass",
       "segments": [
         {
-          "id": "curve-1",
+          "type": "straight",
+          "length": 200
+        },
+        {
           "type": "curve",
-          "start": { "x": 0, "y": 0 },
-          "end": { "x": 200, "y": 200 },
-          "width": 15,
           "length": 300,
+          "angle": 45,
+          "direction": "left"
+        },
+        {
+          "type": "chicane",
+          "length": 200,
+          "direction": "right"
+        },
+        {
+          "type": "curve",
+          "length": 250,
           "angle": 90,
-          "position": { "x": 0, "y": 0 }
+          "direction": "left"
         }
       ],
       "checkpoints": [
-        { "id": "cp-1", "position": { "x": 100, "y": 100 }, "angle": 45, "order": 1 }
+        {
+          "position": 0,
+          "type": "start"
+        },
+        {
+          "position": 50,
+          "type": "sector",
+          "sectorNumber": 1
+        },
+        {
+          "position": 100,
+          "type": "finish"
+        }
       ],
       "surface": "mixed",
-      "difficulty": "hard",
-      "commentary": "Twisty mountain road with mixed surfaces",
-      "createdAt": "2024-03-20T12:00:00Z",
-      "author": "FittipAIdi"
-    },
-    {
-      "id": "invalid-track",
-      "name": "Invalid Demo Track",
-      "segments": [],
-      "checkpoints": [],
-      "surface": "dirt",
-      "difficulty": "easy",
-      "commentary": "This track is intentionally invalid",
-      "createdAt": "2024-03-20T12:00:00Z",
-      "author": "FittipAIdi"
+      "difficulty": "expert",
+      "author": "FittipAIdi Labs",
+      "createdAt": "2024-03-01",
+      "commentary": "A challenging mountain course with mixed surfaces and tight corners."
     }
   ]
 } 
