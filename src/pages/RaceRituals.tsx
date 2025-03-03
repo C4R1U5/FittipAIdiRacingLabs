@@ -64,14 +64,22 @@ export const RaceRituals: React.FC = () => {
                 key={track.id}
                 className={`${styles.trackCard} ${
                   selectedTrack?.id === track.id ? styles.selected : ''
-                }`}
+                } ${track.classification === 'invalid' ? styles.invalid : ''}`}
                 onClick={() => handleTrackSelect(track)}
               >
                 <div className={styles.trackInfo}>
-                  <h3>{track.name}</h3>
+                  <div className={styles.trackHeader}>
+                    <h3>{track.name}</h3>
+                    {track.classification === 'invalid' && (
+                      <span className={styles.warningBadge} title={track.validationErrors?.join('\n')}>
+                        ⚠️
+                      </span>
+                    )}
+                  </div>
                   <div className={styles.trackDetails}>
                     <span className={styles.surface}>{track.surface}</span>
                     <span className={styles.difficulty}>{track.difficulty}</span>
+                    <span className={styles.classification}>{track.classification}</span>
                   </div>
                   <p>{track.commentary}</p>
                 </div>

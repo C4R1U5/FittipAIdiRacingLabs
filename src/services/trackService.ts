@@ -20,13 +20,13 @@ export class TrackService {
   public async loadOfficialTracks(): Promise<Track[]> {
     try {
       console.log('Loading official tracks...');
-      // In a real implementation, this would load from JSON files
-      // For now, we'll use the demo tracks
-      const tracks = await import('../data/tracks/official.json');
-      this.officialTracks = tracks.default.map(track => ({
+      const tracksModule = await import('../data/tracks/official.json');
+      const tracksData = (tracksModule as unknown as { default: Track[] }).default;
+      
+      this.officialTracks = tracksData.map(track => ({
         ...track,
         classification: 'official' as TrackClassification,
-        createdAt: new Date(track.createdAt)
+        createdAt: new Date(track.createdAt).toISOString()
       }));
 
       // Validate each track
@@ -124,5 +124,68 @@ export class TrackService {
 
   public getTrackById(id: string): Track | undefined {
     return this.getAllTracks().find(track => track.id === id);
+  }
+
+  public loadDebugTracks(): Track[] {
+    const debugTracks: Track[] = [
+      {
+        id: 'debug-oval',
+        name: 'Debug Oval',
+        segments: [
+          { 
+            id: 'straight-1',
+            type: 'straight',
+            start: { x: 0, y: 0 },
+            end: { x: 1000, y: 0 },
+            width: 20,
+            length: 1000,
+            position: { x: 0, y: 0 }
+          },
+          { 
+            id: 'curve-1',
+            type: 'curve',
+            start: { x: 1000, y: 0 },
+            end: { x: 1000, y: 500 },
+            width: 20,
+            length: 500,
+            angle: 180,
+            position: { x: 1000, y: 0 }
+          },
+          { 
+            id: 'straight-2',
+            type: 'straight',
+            start: { x: 1000, y: 500 },
+            end: { x: 0, y: 500 },
+            width: 20,
+            length: 1000,
+            position: { x: 1000, y: 500 }
+          },
+          { 
+            id: 'curve-2',
+            type: 'curve',
+            start: { x: 0, y: 500 },
+            end: { x: 0, y: 0 },
+            width: 20,
+            length: 500,
+            angle: 180,
+            position: { x: 0, y: 500 }
+          }
+        ],
+        checkpoints: [
+          { id: 'cp-1', position: { x: 500, y: 0 }, angle: 0, order: 1 },
+          { id: 'cp-2', position: { x: 1000, y: 250 }, angle: 90, order: 2 },
+          { id: 'cp-3', position: { x: 500, y: 500 }, angle: 180, order: 3 },
+          { id: 'cp-4', position: { x: 0, y: 250 }, angle: 270, order: 4 }
+        ],
+        surface: 'asphalt',
+        difficulty: 'easy',
+        commentary: 'Emergency debug track - simple oval for testing',
+        classification: 'invalid',
+        validationErrors: ['Debug track - not for normal gameplay'],
+        createdAt: new Date().toISOString(),
+        author: 'System'
+      }
+    ];
+    return debugTracks;
   }
 } 

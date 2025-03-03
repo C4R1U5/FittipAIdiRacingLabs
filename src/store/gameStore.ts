@@ -42,6 +42,10 @@ const DEMO_VEHICLES: Vehicle[] = [
 ];
 
 interface GameState {
+  // Debug mode
+  isDebugMode: boolean;
+  toggleDebugMode: () => void;
+  
   // Track Management
   tracks: Track[];
   selectedTrack: Track | null;
@@ -70,25 +74,33 @@ interface GameState {
 
 export const useGameStore = create<GameState>((set) => ({
   // Initial state
+  isDebugMode: false,
   tracks: [],
   selectedTrack: null,
   availableTracks: [],
   currentTrack: null,
-  
   vehicles: [],
   selectedVehicle: null,
   availableVehicles: [],
   currentVehicle: null,
-
+  
+  // Debug actions
+  toggleDebugMode: () => set((state) => ({ isDebugMode: !state.isDebugMode })),
+  
   // Track actions
   loadTracks: async () => {
     const trackService = TrackService.getInstance();
     const officialTracks = await trackService.loadOfficialTracks();
     const customTracks = trackService.loadCustomTracks();
+    const debugTracks = trackService.loadDebugTracks();
     
-    set({
-      availableTracks: [...officialTracks, ...customTracks]
-    });
+    set((state) => ({
+      availableTracks: [
+        ...officialTracks,
+        ...customTracks,
+        ...(state.isDebugMode ? debugTracks : [])
+      ]
+    }));
   },
 
   addTrack: (track) => {

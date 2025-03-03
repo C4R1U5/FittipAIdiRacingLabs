@@ -4,12 +4,16 @@ export interface TrackSegment {
   start: { x: number; y: number };
   end: { x: number; y: number };
   width: number;
+  length: number;
+  angle?: number;
+  position: { x: number; y: number };
 }
 
 export interface Checkpoint {
   id: string;
   position: { x: number; y: number };
   order: number;
+  angle: number;
 }
 
 export type TrackClassification = 'official' | 'custom' | 'invalid';
@@ -22,8 +26,8 @@ export interface Track {
   surface: 'asphalt' | 'dirt' | 'mixed';
   difficulty: 'easy' | 'medium' | 'hard';
   commentary: string;
-  createdAt: Date;
-  author: string;
   classification: TrackClassification;
   validationErrors?: string[];
+  createdAt: string;
+  author: string;
 } 

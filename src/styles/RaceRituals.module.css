@@ -218,4 +218,42 @@
   background: #333;
   color: #666;
   cursor: not-allowed;
+}
+
+.trackHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.warningBadge {
+  background: rgba(255, 255, 0, 0.2);
+  color: #ff0;
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: help;
+  transition: all 0.3s ease;
+}
+
+.warningBadge:hover {
+  background: rgba(255, 255, 0, 0.3);
+  transform: scale(1.1);
+}
+
+.trackCard.invalid {
+  border-color: #ff0;
+}
+
+.trackCard.invalid:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+}
+
+.classification {
+  background: rgba(0, 255, 255, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 } 
