@@ -166,7 +166,7 @@
   }
 }
 
-/* Main container */
+/* Main container - now static */
 .container {
   display: flex;
   flex-direction: column;
@@ -177,8 +177,23 @@
   position: relative;
   color: #fff;
   font-family: 'Press Start 2P', monospace;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  /* Remove all animation from main container */
+  transform: none !important;
+  animation: none !important;
+  perspective: none !important;
+}
+
+/* Dedicated animated background layer */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  display: block !important;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 20%, transparent 50%),
     repeating-conic-gradient(
       #111 0% 25%,
@@ -187,59 +202,52 @@
       #000 75% 100%
     );
   background-size: 100px 100px;
+  /* Only the background layer gets the animation */
   animation: flagWave 6s infinite ease-in-out;
   transform-origin: center center;
-  perspective: 1000px;
+  pointer-events: none;
 }
 
-/* Remove the before pseudo-element since we don't need it anymore */
-.container::before {
-  display: none;
-}
-
-/* Title section - single instance */
-.titleContainer {
-  text-align: center;
-  margin-bottom: 2rem;
-  transform: perspective(800px) rotateX(5deg);
-  transform-origin: center top;
+/* Static content wrapper */
+.contentWrapper {
+  position: relative;
   z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Ensure content stays static */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  perspective: none !important;
+  /* Prevent animation inheritance */
+  isolation: isolate;
 }
 
-.title {
-  font-size: 5rem;
-  color: #fff;
-  text-transform: uppercase;
-  margin: 0;
-  letter-spacing: 4px;
-  animation: titleGlowGreen 4s infinite;
-  line-height: 1.2;
-  text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-}
-
-.subtitle {
-  font-size: 5rem;
-  color: #ff0;
-  text-transform: uppercase;
-  margin: 0;
-  letter-spacing: 4px;
-  line-height: 1.2;
-  text-shadow:
-    0 0 8px #ff8800,
-    0 0 12px #ff5500,
-    0 0 16px #ff2200;
-}
-
-/* Menu container */
+/* Menu container - zero motion */
 .menuContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  /* Absolutely no motion */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  perspective: none !important;
+  transform-style: flat !important;
+  /* Double-ensure no inheritance */
+  isolation: isolate;
+  /* Force own stacking context */
+  contain: layout style paint;
 }
 
-/* Menu items */
+/* Menu items - absolute stability */
 .menuItem {
   display: flex;
   align-items: center;
@@ -253,7 +261,20 @@
   width: 100%;
   height: 4rem;
   color: #00f0ff;
-  transition: color 0.2s ease, text-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  z-index: 2;
+  /* Triple-enforce stability */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  perspective: none !important;
+  transform-style: flat !important;
+  /* Create own stacking context */
+  isolation: isolate;
+  contain: layout style paint;
+  /* Force hardware acceleration without transforms */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .menuItem:hover,
@@ -261,12 +282,20 @@
   color: #ff0;
   border-color: #ff0;
   text-shadow: 0 0 10px #ff0;
+  /* Ensure no hover animations */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
 }
 
 .menuItem:hover *,
 .menuItem[aria-selected="true"] * {
   color: #ff0;
   text-shadow: 0 0 10px #ff0;
+  /* Lock child elements */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
 }
 
 .icon {
@@ -275,10 +304,20 @@
   text-align: center;
   color: inherit;
   text-shadow: inherit;
+  /* Lock icon in place */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  position: static !important;
 }
 
 .content {
   flex-grow: 1;
+  /* Lock content in place */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  position: static !important;
 }
 
 .content h3 {
@@ -287,52 +326,25 @@
   letter-spacing: 2px;
   color: inherit;
   text-shadow: inherit;
+  /* Lock heading in place */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  position: static !important;
 }
 
 .content p {
   margin: 0.25rem 0 0 0;
   font-size: 0.7rem;
   color: #aaa;
-  transition: color 0.2s ease;
+  /* Lock paragraph in place */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  position: static !important;
 }
 
-/* Menu item variants */
-.quickRace {
-  --menu-color: #0f0;
-  color: var(--menu-color);
-}
-
-.campaign {
-  --menu-color: #ff0;
-  color: var(--menu-color);
-}
-
-.trackEditor {
-  --menu-color: #0ff;
-  color: var(--menu-color);
-}
-
-.garage {
-  --menu-color: #f40;
-  color: var(--menu-color);
-}
-
-.leaderboard {
-  --menu-color: #fff;
-  color: var(--menu-color);
-}
-
-.options {
-  --menu-color: #66f;
-  color: var(--menu-color);
-}
-
-.archive {
-  --menu-color: #f0f;
-  color: var(--menu-color);
-}
-
-/* Track of the Day section */
+/* Track of the Day section - ensure stability */
 .trackOfTheDay {
   background: rgba(0, 0, 0, 0.8);
   border: 2px solid #f0f;
@@ -341,6 +353,16 @@
   width: 100%;
   height: 5rem;
   margin-top: 0.5rem;
+  position: relative;
+  z-index: 2;
+  /* Prevent any animation inheritance */
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+  perspective: none !important;
+  /* Create own stacking context */
+  isolation: isolate;
+  contain: layout style paint;
 }
 
 .trackPreview {
@@ -358,7 +380,7 @@
 }
 
 .trackName {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #fff;
   text-shadow: 0 0 5px #f0f;
   margin: 0;
@@ -375,7 +397,7 @@
 }
 
 .trackStats {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #fff;
   text-shadow: 0 0 5px #f0f;
   margin: 0;
@@ -489,4 +511,78 @@
   to {
     opacity: 0;
   }
+}
+
+/* Menu item variants */
+.quickRace {
+  --menu-color: #0f0;
+  color: var(--menu-color);
+}
+
+.campaign {
+  --menu-color: #ff0;
+  color: var(--menu-color);
+}
+
+.trackEditor {
+  --menu-color: #0ff;
+  color: var(--menu-color);
+}
+
+.garage {
+  --menu-color: #f40;
+  color: var(--menu-color);
+}
+
+.leaderboard {
+  --menu-color: #fff;
+  color: var(--menu-color);
+}
+
+.options {
+  --menu-color: #66f;
+  color: var(--menu-color);
+}
+
+.archive {
+  --menu-color: #f0f;
+  color: var(--menu-color);
+}
+
+/* Title section - single instance */
+.titleContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+  transform: perspective(800px) rotateX(5deg);
+  transform-origin: center top;
+  z-index: 1;
+  position: relative;
+  /* Create own stacking context */
+  isolation: isolate;
+}
+
+.title {
+  font-size: 5rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 4px;
+  animation: titleGlowGreen 4s infinite;
+  line-height: 1.2;
+  text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 5rem;
+  color: #ff0;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  text-shadow:
+    0 0 8px #ff8800,
+    0 0 12px #ff5500,
+    0 0 16px #ff2200;
+  position: relative;
 } 
