@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../store/gameStore';
+import { BackToMenu } from './CommandHub';
 import styles from '../styles/RaceRituals.module.css';
 import type { Track } from '../types/Track';
 import type { Vehicle } from '../types/Vehicle';
@@ -50,6 +51,7 @@ export const RaceRituals: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <BackToMenu />
       <div className={styles.header}>
         <h1>RACE RITUALS</h1>
         <p>Select your track and vehicle</p>

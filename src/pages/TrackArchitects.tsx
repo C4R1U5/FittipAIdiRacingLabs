@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BackToMenu } from './CommandHub';
 import styles from '../styles/TrackArchitects.module.css';
 
 export const TrackArchitects: React.FC = () => {
@@ -7,6 +8,7 @@ export const TrackArchitects: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <BackToMenu />
       <div className={styles.header}>
         <h1>APEX ARCHITECTS</h1>
         <p>Track Builder Coming Soon</p>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../store/gameStore';
+import { BackToMenu } from './CommandHub';
 import styles from '../styles/RaceScreen.module.css';
 
 export const RaceScreen: React.FC = () => {
@@ -14,6 +15,7 @@ export const RaceScreen: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <BackToMenu />
       <div className={styles.header}>
         <div className={styles.trackInfo}>
           <h1>{currentTrack.name}</h1>
