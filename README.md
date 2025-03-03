@@ -1,19 +1,28 @@
-# FittipAIdi Racing Labs V2
+# Apex Architects
+### A FittipAIdi Racing Labs Production
 
-A modern TypeScript React application for managing racing tracks and vehicles.
+Apex Architects is not just a racing game — it's a revolution in racecraft.
 
-## Features
+Every player becomes a driver *and* a track architect, sketching their way to racing glory.
+We blend the purity of retro top-down racing with creative control over every curve, apex, and chicane.
 
-- Track Management
-  - Create and edit racing tracks with segments
-  - Define track properties like surface type and difficulty
-  - Add checkpoints for racing objectives
-  - Track metadata including author and creation date
+## Core Features
+- Draw your own tracks, race your own creations.
+- Conquer legendary real-world-inspired circuits with creative twists.
+- Unlock faster machines as you master the craft.
+- Compete for the perfect lap — on tracks you designed.
+- All under the roof of **FittipAIdi Racing Labs**.
 
-- Vehicle Management
-  - Create and customize vehicles
-  - Configure performance attributes
-  - Customize vehicle appearance with colors and decals
+## Game Modes
+- 🏁 **ThrottleScrawl:** Full Season Campaign
+- ✏️ **Sketch & Shred:** Instant Track & Race
+- 🛠️ **Apex Architects:** Full Creative Track Builder
+- 🏆 **Tarmac Graffiti Certified Tracks:** Showcase Your Best Lines
+
+## Future Features
+- 👻 **Ghostline Grandmasters:** Time attack against global legends.
+- 🌍 **Shared Tracks & Challenges:** Upload and race the world's best player-created tracks.
+- ❤️ **Track Voting System:** Discover the most-loved creations in the community.
 
 ## Technology Stack
 
@@ -69,4 +78,7 @@ src/
 
 ## Development
 
-The project uses TypeScript for type safety and better developer experience. All components are function components using React hooks. 
+The project uses TypeScript for type safety and better developer experience. All components are function components using React hooks.
+
+#### Racing isn't just speed. Racing is art.
+#### Join us — and leave your mark on racing history.
