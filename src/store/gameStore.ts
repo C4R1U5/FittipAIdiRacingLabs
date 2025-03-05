@@ -1,8 +1,12 @@
 import { create } from 'zustand';
 import { Track } from '../types/Track';
-import { Vehicle } from '../types/Vehicle';
-import { trackService } from '../services/TrackService';
-import { vehicleService } from '../services/VehicleService';
+import { Vehicle, VehicleVisuals, Decal } from '../types/Vehicle';
+import { TrackService } from '../services/trackService';
+import { VehicleService } from '../services/vehicleService';
+
+// Get service instances
+const trackService = TrackService.getInstance();
+const vehicleService = VehicleService.getInstance();
 
 // Placeholder data for vehicles until we implement the vehicle system
 const DEMO_VEHICLES: Vehicle[] = [
@@ -16,6 +20,7 @@ const DEMO_VEHICLES: Vehicle[] = [
       color: '#ff0000',
       decals: [],
     },
+    classification: 'official'
   },
   {
     id: 'thunder-mk2',
@@ -27,6 +32,7 @@ const DEMO_VEHICLES: Vehicle[] = [
       color: '#0066ff',
       decals: [],
     },
+    classification: 'official'
   },
   {
     id: 'flash-prototype',
@@ -38,6 +44,7 @@ const DEMO_VEHICLES: Vehicle[] = [
       color: '#ffff00',
       decals: [],
     },
+    classification: 'official'
   },
 ];
 
@@ -70,27 +77,62 @@ interface GameState {
   loadVehicles: () => Promise<void>;
   selectVehicle: (vehicleId: string) => void;
   setCurrentVehicle: (vehicle: Vehicle) => void;
+  
+  // New actions
+  setSelectedTrack: (track: Track) => void;
+  setSelectedVehicle: (vehicle: Vehicle) => void;
+  
+  // Additional state
+  selectedTrackId: string | null;
+  selectedVehicleId: string | null;
+  isLoading: boolean;
+  error: string | null;
 }
 
-export const useGameStore = create<GameState>((set) => ({
+const defaultVehicleVisuals: VehicleVisuals = {
+  color: '#000000',
+  decals: []
+};
+
+const defaultVehicle: Vehicle = {
+  id: '',
+  name: '',
+  speed: 0,
+  acceleration: 0,
+  handling: 0,
+  visuals: defaultVehicleVisuals,
+  classification: 'official'
+};
+
+export const useGameStore = create<GameState>((set, get) => ({
   // Initial state
   isDebugMode: false,
   tracks: [],
   selectedTrack: null,
   availableTracks: [],
   currentTrack: null,
-  vehicles: [],
+  vehicles: [defaultVehicle],
   selectedVehicle: null,
   availableVehicles: [],
   currentVehicle: null,
+  selectedTrackId: null,
+  selectedVehicleId: null,
+  isLoading: false,
+  error: null,
   
   // Debug actions
   toggleDebugMode: () => set((state) => ({ isDebugMode: !state.isDebugMode })),
   
   // Track actions
   loadTracks: async () => {
-    const tracks = await trackService.loadAllTracks();
-    set({ availableTracks: tracks });
+    try {
+      set({ isLoading: true, error: null });
+      const tracks = await trackService.loadAllTracks();
+      set({ tracks, availableTracks: tracks, isLoading: false });
+    } catch (error) {
+      console.error('Failed to load tracks:', error);
+      set({ error: 'Failed to load tracks', isLoading: false });
+    }
   },
 
   addTrack: (track) => {
@@ -102,9 +144,9 @@ export const useGameStore = create<GameState>((set) => ({
     }));
   },
   
-  selectTrack: (trackId) => set((state) => ({ 
-    selectedTrack: state.availableTracks.find(t => t.id === trackId) || null 
-  })),
+  selectTrack: (trackId: string) => {
+    set({ selectedTrackId: trackId });
+  },
   
   updateTrack: (track) => {
     const trackService = TrackService.getInstance();
@@ -117,7 +159,7 @@ export const useGameStore = create<GameState>((set) => ({
     }));
   },
   
-  deleteTrack: (trackId) => set((state) => {
+  deleteTrack: (trackId: string) => set((state) => {
     const track = state.tracks.find(t => t.id === trackId);
     if (track?.classification === 'custom') {
       // Remove from localStorage if it's a custom track
@@ -139,13 +181,19 @@ export const useGameStore = create<GameState>((set) => ({
 
   // Vehicle actions
   loadVehicles: async () => {
-    const vehicles = await vehicleService.loadVehicles();
-    set({ availableVehicles: vehicles });
+    try {
+      set({ isLoading: true, error: null });
+      const vehicles = await vehicleService.loadVehicles();
+      set({ vehicles, availableVehicles: vehicles, isLoading: false });
+    } catch (error) {
+      console.error('Failed to load vehicles:', error);
+      set({ error: 'Failed to load vehicles', isLoading: false });
+    }
   },
   
-  selectVehicle: (vehicleId) => set((state) => ({ 
-    selectedVehicle: state.availableVehicles.find(v => v.id === vehicleId) || null 
-  })),
+  selectVehicle: (vehicleId: string) => {
+    set({ selectedVehicleId: vehicleId });
+  },
 
   setCurrentVehicle: (vehicle) => set(() => ({
     currentVehicle: vehicle
@@ -153,5 +201,9 @@ export const useGameStore = create<GameState>((set) => ({
 
   // New actions
   setSelectedTrack: (track) => set({ selectedTrack: track }),
-  setSelectedVehicle: (vehicle) => set({ selectedVehicle: vehicle })
+  setSelectedVehicle: (vehicle) => set({ selectedVehicle: vehicle }),
+
+  setError: (error: string | null) => {
+    set({ error });
+  }
 })); 

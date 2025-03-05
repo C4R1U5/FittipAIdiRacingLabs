@@ -1,0 +1,181 @@
+.trackEditor {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 200px);
+  background: #111;
+  border: 2px solid #00f0ff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #00f0ff;
+}
+
+.button {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: #0f0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: rgba(0, 255, 0, 0.1);
+  text-shadow: 0 0 5px #0f0;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.widthControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0f0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+}
+
+.widthInput {
+  width: 60px;
+  padding: 0.25rem;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  color: #0f0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+}
+
+.widthInput:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.track-editor {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.track-editor-toolbar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #0056b3;
+}
+
+.button.active:disabled {
+  background-color: #ccc;
+  border-color: #bbb;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: #fff;
+  border-color: #28a745;
+}
+
+.save-button:hover:not(:disabled) {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.save-button:disabled {
+  background-color: #94d3a2;
+  border-color: #94d3a2;
+}
+
+.track-editor-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.track-editor-toolbar input[type="number"] {
+  width: 60px;
+  padding: 0.25rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.track-editor-canvas {
+  flex: 1;
+  background-color: #fff;
+  cursor: crosshair;
+}
+
+.track-info {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.hint {
+  color: #28a745;
+  font-weight: 500;
+} 
