@@ -1,0 +1,40 @@
+{
+  "vehicles": [
+    {
+      "id": "default-car",
+      "name": "Default Car",
+      "speed": 80,
+      "acceleration": 75,
+      "handling": 70,
+      "visuals": {
+        "color": "#FF0000",
+        "decals": []
+      },
+      "classification": "official"
+    },
+    {
+      "id": "speed-demon",
+      "name": "Speed Demon",
+      "speed": 95,
+      "acceleration": 85,
+      "handling": 60,
+      "visuals": {
+        "color": "#0000FF",
+        "decals": []
+      },
+      "classification": "official"
+    },
+    {
+      "id": "balanced-racer",
+      "name": "Balanced Racer",
+      "speed": 85,
+      "acceleration": 80,
+      "handling": 85,
+      "visuals": {
+        "color": "#00FF00",
+        "decals": []
+      },
+      "classification": "official"
+    }
+  ]
+} 
